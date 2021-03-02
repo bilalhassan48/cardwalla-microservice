@@ -15,7 +15,8 @@ public interface ZingPayServiceClient {
     Status validateUserAndSubscribeBundle(@RequestHeader("Authorization") String token,
                                           @RequestBody TransactionDto transactionDto);
 
-    @GetMapping("/bundle/service/{network}")
+    @GetMapping("/bundle/service/{network}/{type}")
     Status getBundles(@RequestHeader("Authorization") String token,
-                      @PathVariable(name = "network") String network);
+                      @PathVariable(name = "network") String network,
+                      @PathVariable(name = "type") String type);
 }
