@@ -1,7 +1,6 @@
 package com.zingpay.cardwalla.controller;
 
 import com.zingpay.cardwalla.dto.TransactionDto;
-import com.zingpay.cardwalla.feign.CardWallaIntegrationClient;
 import com.zingpay.cardwalla.feign.ZingPayServiceClient;
 import com.zingpay.cardwalla.util.Status;
 import io.swagger.annotations.Api;
@@ -25,8 +24,8 @@ public class ProductController extends BaseController {
     private ZingPayServiceClient zingPayServiceClient;
 
     @ApiOperation(value = "", response = Status.class)
-    @GetMapping("{/type}")
-    public Status getAgentProducts(String type) {
+    @GetMapping("/{type}")
+    public Status getAgentProducts(@PathVariable("type") String type) {
         //return cardWallaIntegrationClient.getAgentProducts();
         return zingPayServiceClient.getBundles(getToken(), "CARDWALLA", type);
     }

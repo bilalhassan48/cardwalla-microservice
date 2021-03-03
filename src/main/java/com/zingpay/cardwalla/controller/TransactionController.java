@@ -25,6 +25,6 @@ public class TransactionController extends BaseController {
     @ApiOperation(value = "", response = Status.class)
     @GetMapping
     public Status getTransactionInfo() {
-        return cardWallaIntegrationClient.getTransactionInfo();
+        return cardWallaIntegrationClient.getTransactionInfo(getToken());
     }
 }

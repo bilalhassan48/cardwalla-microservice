@@ -23,4 +23,5 @@ public class TransactionDto implements Serializable {
     private Date dateTime;
     private String billingMonth;
     private String bundleId;
+    private String email;
 }

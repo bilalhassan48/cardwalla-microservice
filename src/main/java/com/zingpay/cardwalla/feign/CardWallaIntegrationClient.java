@@ -6,6 +6,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 
 /**
  * @author Bilal Hassan on 23-Feb-21
@@ -16,11 +17,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 public interface CardWallaIntegrationClient {
 
     @GetMapping("/product")
-    Status getAgentProducts();
+    Status getAgentProducts(@RequestHeader("Authorization") String token);
 
     @GetMapping("/transaction-info")
-    Status getTransactionInfo();
+    Status getTransactionInfo(@RequestHeader("Authorization") String token);
 
     @PostMapping("/product")
-    Status purchaseProduct(@RequestBody TransactionDto transactionDto);
+    Status purchaseProduct(@RequestHeader("Authorization") String token, @RequestBody TransactionDto transactionDto);
 }
